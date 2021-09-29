@@ -12,11 +12,12 @@
           </div>
       </div>
       <div class="panel-body">
-        <app-contact-list></app-contact-list>
+        <app-contact-list (selectedContactEvent)="selectedContact = $event"></app-contact-list>
       </div>
     </div>
   </div>
   <div class="col-md-4">
-    <app-contact-detail></app-contact-detail>
+    <app-contact-detail *ngIf="selectedContact" [contact]="selectedContact"></app-contact-detail>
+
   </div>
 </div>
