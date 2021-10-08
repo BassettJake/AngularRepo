@@ -13,7 +13,7 @@ import { DocumentItemComponent } from './documents/document-list/document-item/d
 import { DocumentDetailComponent } from './documents/document-detail/document-detail.component';
 import { MessageItemComponent } from './messages/message-item/message-item.component';
 import { MessageEditComponent } from './messages/message-edit/message-edit.component';
-import { MessagesListComponent } from './messages/messages-list/messages-list.component';
+import { MessagesListComponent } from './messages/messages-list.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 
 @NgModule({
