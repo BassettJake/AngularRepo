@@ -8,10 +8,10 @@
             <img class="img-responsive" style="max-height: 50px" [src]="contact.imageUrl" alt="">
           </div>
           <div class="col-xs-3">
-            <button class="btn btn-primary">Edit</button>
+            <button routerLink="edit" class="btn btn-primary">Edit</button>
           </div>
           <div class="col-xs-3">
-            <button class="btn btn-danger">Delete</button>
+            <button (click)="onDelete()" class="btn btn-danger">Delete</button>
           </div>
         </div>
       </div>
