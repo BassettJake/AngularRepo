@@ -1,4 +1,5 @@
 import { Injectable, Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Contact } from '../contact.model';
 import { ContactService } from '../contact.service';
 
@@ -10,15 +11,18 @@ import { ContactService } from '../contact.service';
 export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
+  private subscription: Subscription;
 
   constructor(private contactService: ContactService) { }
 
   ngOnInit(): void {
     this.contacts = this.contactService.getContacts();
-    this.contactService.contactChangedEvent .subscribe((contacts: Contact[]) => {
+    this.subscription = this.contactService.contactChangedEvent.subscribe((contacts: Contact[]) => {
       this.contacts = contacts;
     });
   }
- 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
 }
