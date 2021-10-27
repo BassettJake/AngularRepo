@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <app-contact-item *ngFor="let contactEle of contacts let i = index" [contact]="contactEle" [index]="i"
-      ></app-contact-item>
+    dnd-draggable [dragEnabled]="true" [dragData]="contactEle" [dropZones]="['contactGroup']"
+    ></app-contact-item>
   </div>
 </div>

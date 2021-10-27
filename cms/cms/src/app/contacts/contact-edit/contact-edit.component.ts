@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Contact } from '../contact.model';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-contact-edit',
@@ -7,9 +11,85 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactEditComponent implements OnInit {
 
-  constructor() { }
+  originalContact: Contact;
+  contact: Contact;
+  groupContacts: Contact[] = [];
+  editMode: boolean = false;
+  id: string;
+
+  constructor(private contactService: ContactService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+
+        this.id = (+params['id']).toString();
+        if (this.id == null || this.id == undefined) {
+          this.editMode = false
+          return
+        }
+        this.originalContact = this.contactService.getContact(this.id);
+        if (!this.originalContact) {
+          return
+        }
+
+        this.editMode = true;
+        this.contact = JSON.parse(JSON.stringify(this.originalContact));
+
+        if (this.contact.group) {
+          this.groupContacts = this.contact.group.slice();
+        }
+      });
   }
+
+  onSubmit(form: NgForm) {
+    let value = form.value // get values from form’s fields
+    let newContact = new Contact(value.id, value.name, value.email, value.phone, value.imageUrl, value.group);
+    if (this.editMode == true) {
+      this.contactService.updateContact(this.originalContact, newContact);
+    }
+    else {
+      this.contactService.addContact(newContact);
+    }
+
+    this.router.navigate(['/contacts']);
+  }
+
+  onCancel() {
+    this.router.navigate(['/contacts']);
+  }
+
+  isInvalidContact(newContact: Contact) {
+    if (!newContact) {// newContact has no value
+      return true;
+    }
+    if (this.contact && newContact.id === this.contact.id) {
+      return true;
+    }
+    for (let i = 0; i < this.groupContacts.length; i++) {
+      if (newContact.id === this.groupContacts[i].id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  addToGroup($event: any) {
+    const selectedContact: Contact = $event.dragData;
+    const invalidGroupContact = this.isInvalidContact(selectedContact);
+    if (invalidGroupContact) {
+      return false;
+    }
+    this.groupContacts.push(selectedContact);
+  }
+
+  onRemoveItem(index: number) {
+    if (index < 0 || index >= this.groupContacts.length) {
+       return;
+    }
+    this.groupContacts.splice(index, 1);
+ }
 
 }
