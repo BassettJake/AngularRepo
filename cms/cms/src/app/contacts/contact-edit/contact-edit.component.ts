@@ -22,6 +22,7 @@ export class ContactEditComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(
       (params: Params) => {
 
@@ -34,9 +35,9 @@ export class ContactEditComponent implements OnInit {
         if (!this.originalContact) {
           return
         }
-
         this.editMode = true;
         this.contact = JSON.parse(JSON.stringify(this.originalContact));
+ 
 
         if (this.contact.group) {
           this.groupContacts = this.contact.group.slice();
@@ -46,14 +47,15 @@ export class ContactEditComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     let value = form.value // get values from form’s fields
-    let newContact = new Contact(value.id, value.name, value.email, value.phone, value.imageUrl, value.group);
+    let newContact = new Contact(value.id, value.name, value.email, value.phone, value.imageUrl, this.groupContacts);
+
     if (this.editMode == true) {
+      newContact.id = this.originalContact.id;
       this.contactService.updateContact(this.originalContact, newContact);
     }
     else {
       this.contactService.addContact(newContact);
     }
-
     this.router.navigate(['/contacts']);
   }
 
@@ -83,6 +85,7 @@ export class ContactEditComponent implements OnInit {
       return false;
     }
     this.groupContacts.push(selectedContact);
+ 
   }
 
   onRemoveItem(index: number) {
