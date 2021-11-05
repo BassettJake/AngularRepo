@@ -12,17 +12,22 @@ export class ContactListComponent implements OnInit {
 
   contacts: Contact[];
   private subscription: Subscription;
+  term: string;
 
   constructor(private contactService: ContactService) { }
 
-  ngOnInit(): void {
-    this.contacts = this.contactService.getContacts();
+  async ngOnInit() {
+    this.contacts = await this.contactService.getContacts();
     this.subscription = this.contactService.contactChangedEvent.subscribe((contacts: Contact[]) => {
       this.contacts = contacts;
     });
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  search(value: string){
+    this.term = value;
   }
 
 }
