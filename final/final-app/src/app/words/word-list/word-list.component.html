@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row pad-left-right">
+        <span class="pull-left title">Words</span>
+        <a routerLink="new" class="btn btn-success pull-right">Add Word</a>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="center-panel">
+        <app-word-item *ngFor="let wordEle of words let i = index"  [word]="wordEle" [index]="i"
+        ></app-word-item>
+      </div>
+    </div>
+  
+  </div>
+  
