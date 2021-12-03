@@ -1,1 +1,85 @@
-<p>word-edit works!</p>
+<div class="panel panel-default word-edit-wrap">
+    <div class="panel-body">
+  
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" id="word-edit">
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+              <label for="plainText">Plain Text:</label>
+              <input type="text" id="plainText" class="form-control" name="plainText"
+             required [ngModel]=word?.plainText #plainText="ngModel" placeholder="How the word is spelt">
+            </div>
+          </div>
+  
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="ipdaButtonWrap">Pronounciation:</label>
+            <div id="ipaButtonWrap">
+                <button type="button" class="ipaButton" id="ɔ">ɔ</button>
+                <button type="button" class="ipaButton" id="æ">æ</button>
+                <button type="button" class="ipaButton" id="ʌ">ʌ</button>
+                <button type="button" class="ipaButton" id="ɑ">ɑ</button>
+                <button type="button" class="ipaButton" id="aʊ">aʊ</button>
+                <button type="button" class="ipaButton" id="aɪ">aɪ</button>
+                <button type="button" class="ipaButton" id="b">b</button>
+                <button type="button" class="ipaButton" id="ʧ">ʧ</button>
+                <button type="button" class="ipaButton" id="d">d</button>
+                <button type="button" class="ipaButton" id="ð">ð</button>
+                <button type="button" class="ipaButton" id="ɛ">ɛ</button>
+                <button type="button" class="ipaButton" id="ɚ">ɚ</button>
+                <button type="button" class="ipaButton" id="eɪ">eɪ</button>
+                <button type="button" class="ipaButton" id="f">f</button>
+                <button type="button" class="ipaButton" id="ɡ">ɡ</button>
+                <button type="button" class="ipaButton" id="h">h</button>
+                <button type="button" class="ipaButton" id="ɪ">ɪ</button>
+                <button type="button" class="ipaButton" id="i">i</button>
+                <button type="button" class="ipaButton" id="dʒ">dʒ</button>
+                <button type="button" class="ipaButton" id="k">k</button>
+                <button type="button" class="ipaButton" id="l">l</button>
+                <button type="button" class="ipaButton" id="m">m</button>
+                <button type="button" class="ipaButton" id="n">n</button>
+                <button type="button" class="ipaButton" id="ŋ">ŋ</button>
+                <button type="button" class="ipaButton" id="oʊ">oʊ</button>
+                <button type="button" class="ipaButton" id="ɔɪ">ɔɪ</button>
+                <button type="button" class="ipaButton" id="p">p</button>
+                <button type="button" class="ipaButton" id="ɹ">ɹ</button>
+                <button type="button" class="ipaButton" id="s">s</button>
+                <button type="button" class="ipaButton" id="ʃ">ʃ</button>
+                <button type="button" class="ipaButton" id="t">t</button>
+                <button type="button" class="ipaButton" id="θ">θ</button>
+                <button type="button" class="ipaButton" id="ʊ">ʊ</button>
+                <button type="button" class="ipaButton" id="u">u</button>
+                <button type="button" class="ipaButton" id="v">v</button>
+                <button type="button" class="ipaButton" id="w">w</button>
+                <button type="button" class="ipaButton" id="j">j</button>
+                <button type="button" class="ipaButton" id="z">z</button>
+                <button type="button" class="ipaButton" id="ʒ">ʒ</button>
+            </div>
+            <span id="tooltip"></span>
+             </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <label for="ipaText">IPA Text:</label>
+            <input type="text" id="ipaText" class="form-control" name="ipaText"
+            [ngModel]=word?.ipaText #ipaText="ngModel"  placeholder="How the word is pronounced" readonly>
+
+          </div>
+        </div>
+  
+        <div class="alert alert-danger" *ngIf="!f.valid">Plain Text cannot be blank. Please use the IPA buttons to create a word.</div>
+  
+        <div class="row">
+          <div class="col-xs-12 btn-toolbar centered-toolbar">
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+            <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+            <button class="btn btn-danger" type="button" (click)="onClear()">Clear</button>
+          </div>
+        </div>
+  
+      </form>
+  
+    </div>
+  </div>
+  

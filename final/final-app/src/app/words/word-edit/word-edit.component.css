@@ -1,0 +1,56 @@
+.word-edit-wrap{
+  display: grid;
+  width: 50%;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+}
+
+.form-group {
+  display: grid;
+  margin-bottom: 10px;
+}
+
+#plainText,
+#ipaText {
+  width: 100%;
+}
+
+#ipaButtonWrap {
+  display: grid;
+  grid-template-columns: repeat(13, 1fr);
+  grid-gap: 5px;
+
+}
+
+.ipaButton {
+  position: relative;
+  border: none;
+  outline: solid black 1px;
+  height: 3.5vw;
+}
+
+#tooltip {
+  opacity: 0;
+  pointer-events: none;
+  background-color: white;
+  padding: 2px;
+  margin: 15px 0;
+  width: max-content;
+  justify-self: center;
+  height: 20px;
+}
+
+.tooltip-show{
+  opacity: 1 !important;
+}
+
+input.ng-invalid {
+  border: none;
+  outline: 1px solid red;
+}
+
+.centered-toolbar{
+  display: flex;
+  justify-content: center;
+}

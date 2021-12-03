@@ -1,1 +1,24 @@
-<p>word-detail works!</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-12">
+          <h2><strong>{{word.plainText}}</strong></h2>
+          <div class="col-xs-12">
+            <div class="col-xs-3">
+              <button routerLink="edit" class="btn btn-primary">Edit</button>
+            </div>
+            <div class="col-xs-3">
+              <button (click)="onDelete()" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div>
+        <strong>{{word.ipaText}}</strong>
+      </div>
+  
+    </div>
+  </div>
+  

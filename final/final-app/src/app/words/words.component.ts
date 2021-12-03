@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Word } from './word.model';
+import { WordService } from './word.service';
 
 @Component({
   selector: 'app-words',
@@ -8,9 +9,14 @@ import { Word } from './word.model';
 })
 export class WordsComponent implements OnInit {
 
-  constructor() { }
+  selectedWord: Word;
+
+  constructor(private wordService: WordService) { }
 
   ngOnInit(): void {
-  }
 
+    this.wordService.wordSelectedEvent.subscribe((word: Word) => {
+      this.selectedWord = word;
+    })
+  }
 }
