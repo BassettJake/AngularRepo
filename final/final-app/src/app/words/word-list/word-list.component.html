@@ -1,16 +1,20 @@
-<div class="panel panel-default">
+<div id="word-list" class="panel panel-default">
+    <div class="panel-body">
+      <div class="center-panel">
+        <div class="word-detail word-detail-headings">
+          <div class="word-detail-heading"><strong>Plain Format</strong></div>
+          <div class="word-detail-heading"><strong>IPA Format</strong></div>
+          <div class="word-detail-heading"><strong>Edit</strong></div>
+          <div class="word-detail-heading"><strong>Delete</strong></div>
+        </div>
+        <app-word-detail *ngFor="let wordEle of words let i = index"  [word]="wordEle" [index]="i"
+        ></app-word-detail>
+      </div>
+    </div>
     <div class="panel-heading">
-      <div class="row pad-left-right">
-        <span class="pull-left title">Words</span>
+      <div class="add-word-wrap row pad-left-right">
         <a routerLink="new" class="btn btn-success pull-right">Add Word</a>
       </div>
     </div>
-    <div class="panel-body">
-      <div class="center-panel">
-        <app-word-item *ngFor="let wordEle of words let i = index"  [word]="wordEle" [index]="i"
-        ></app-word-item>
-      </div>
-    </div>
-  
   </div>
   

@@ -1,0 +1,15 @@
+.word-detail{
+    display: grid;
+position: relative;
+grid-template-columns: repeat(4, 1fr);
+}
+
+.word-detail-item{
+    text-align: center;
+}
+
+.word-detail-item:nth-child(1),
+.word-detail-item:nth-child(2),
+.word-detail-item:nth-child(3) {
+  border-right: 2px solid black;
+}

@@ -19,13 +19,13 @@ export class WordDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params
+    /*this.route.params
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
           this.word = this.wordService.getWord(this.id);
         }
-      );
+      );*/
   }
 
 

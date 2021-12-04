@@ -1,0 +1,32 @@
+.word-detail {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.word-detail-heading {
+  text-align: center;
+}
+
+.word-detail-heading:nth-child(1),
+.word-detail-heading:nth-child(2),
+.word-detail-heading:nth-child(3) {
+  border-right: 2px solid black;
+}
+
+.hiddenEle {
+  opacity: 0;
+  position: absolute;
+}
+
+#word-list{
+  display:grid;
+  justify-content: center;
+}
+
+.add-word-wrap{
+  text-align: center;
+  margin: 30px 0;
+}

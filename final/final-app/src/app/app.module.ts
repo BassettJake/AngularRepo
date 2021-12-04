@@ -8,7 +8,6 @@ import { WordsComponent } from './words/words.component';
 import { WordListComponent } from './words/word-list/word-list.component';
 import { WordEditComponent } from './words/word-edit/word-edit.component';
 import { WordDetailComponent } from './words/word-detail/word-detail.component';
-import { WordItemComponent } from './words/word-list/word-item/word-item.component';
 import { HeaderComponent } from './header.component';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { HeaderComponent } from './header.component';
     WordListComponent,
     WordEditComponent,
     WordDetailComponent,
-    WordItemComponent,
     HeaderComponent
   ],
   imports: [

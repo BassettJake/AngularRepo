@@ -1,0 +1,32 @@
+{
+    "words":[{
+        "id": "0",
+        "plainText": "test",
+        "ipaText": ""
+    },
+    {
+        "id": "1",
+        "plainText": "hello",
+        "ipaText": ""
+    },
+    {
+        "id": "2",
+        "plainText": "zebra",
+        "ipaText": ""
+    },
+    {
+        "id": "3",
+        "plainText": "words",
+        "ipaText": ""
+    },
+    {
+        "id": "4",
+        "plainText": "tokyo",
+        "ipaText": ""
+    },
+    {
+        "id": "5",
+        "plainText": "tortilla",
+        "ipaText": ""
+    }]
+}

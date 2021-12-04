@@ -18,11 +18,11 @@ export class WordService {
     constructor(http: HttpClient) {
         this.http = http;
         this.maxWordId = this.getMaxId();
-        this.words = MOCKWORDS;
+        //this.words = MOCKWORDS;
     }
 
     getWords(): Word[] {
-        /*this.http.get('http://localhost:3000/words')
+        this.http.get('http://localhost:3000/words')
             .subscribe(
                 // success method
                 (words: Word[]) => {
@@ -36,7 +36,7 @@ export class WordService {
                 (error: any) => {
                     console.log(error.message);
                 }
-            );*/
+            );
 
         return this.words.slice();
     }
@@ -137,7 +137,7 @@ export class WordService {
 
     storeWords() {
         let words = JSON.stringify(this.words);
-        this.http.put('https://angular-nov21-default-rtdb.firebaseio.com/words.json', words,
+        this.http.put('https://angular-final-app-2021-default-rtdb.firebaseio.com/words.json', words,
             {
                 headers: new HttpHeaders(
                     {

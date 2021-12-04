@@ -14,9 +14,11 @@ export class WordEditComponent implements OnInit {
   word: Word;
   editMode: boolean = false;
   id: number;
+  
   @ViewChild('plainText',{read: ElementRef}) plainText: ElementRef;
   @ViewChild('ipaText',{read: ElementRef}) ipaText: ElementRef;
   @ViewChild('f') f: NgForm;
+
 
   constructor(private wordService: WordService,
     private router: Router,
@@ -25,6 +27,8 @@ export class WordEditComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    let list = document.getElementById("word-list");
+    list.classList.add("hiddenEle");
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -56,6 +60,11 @@ export class WordEditComponent implements OnInit {
           wec.setToggleTooltip(false, eles[i].id);
         });
       }
+  }
+
+  ngOnDestroy(): void{
+    let list = document.getElementById("word-list");
+    list.classList.remove("hiddenEle");
   }
 
   setToggleTooltip(state, id){
