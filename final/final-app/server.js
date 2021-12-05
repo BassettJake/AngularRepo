@@ -10,13 +10,11 @@ var mongoose = require('mongoose');
 var index = require('./server/routes/app');
 
 //get defined routing files
-const messageRoutes = require('./server/routes/messages');
-const contactRoutes = require('./server/routes/contacts');
-const documentRoutes = require('./server/routes/documents');
+const wordRoutes = require('./server/routes/words');
 
 
 // establish a connection to the mongo database
-mongoose.connect('mongodb://localhost:27017/cms',
+mongoose.connect('mongodb://localhost:27017/final-app',
    { useNewUrlParser: true }, (err, res) => {
       if (err) {
          console.log('Connection failed: ' + err);
@@ -55,17 +53,15 @@ app.use((req, res, next) => {
 
 // Tell express to use the specified director as the
 // root directory for your web site
-app.use(express.static(path.join(__dirname, 'dist/cms')));
+app.use(express.static(path.join(__dirname, 'dist/final-app')));
 
 // Tell express to map the default route ('/') to the index route
 app.use('/', index);
-app.use('/messages', messageRoutes);
-app.use('/contacts', contactRoutes);
-app.use('/documents', documentRoutes);
+app.use('/words', wordRoutes);
 
 // Tell express to map all other non-defined routes back to the index page
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/cms/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/final-app/index.html'));
 });
 
 // Define the port address and tell express to use this port

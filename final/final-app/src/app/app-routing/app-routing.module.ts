@@ -7,11 +7,13 @@ import { WordEditComponent } from '../words/word-edit/word-edit.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/words', pathMatch: 'full' },
-  { path: 'words', component: WordsComponent, children:[
-    { path: 'new', component: WordEditComponent },
-    { path: ':id', component: WordDetailComponent },
-    { path: ':id/edit', component: WordEditComponent }
-  ] }
+  {
+    path: 'words', component: WordsComponent, children: [
+      { path: 'new', component: WordEditComponent },
+      { path: ':id', component: WordDetailComponent },
+      { path: ':id/edit', component: WordEditComponent }
+    ]
+  }
 
 ];
 
