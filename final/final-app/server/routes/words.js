@@ -23,10 +23,10 @@ router.post('/', (req, res, next) => {
   
     const Word = new Word({
       id: maxWordId,
-      name: req.body.name,
-      description: req.body.description,
-      url: req.body.url
+      plainText:req.body.plainText,
+      ipaText: req.body.ipaText
     });
+
   
     Word.save()
       .then(createdWord => {
@@ -46,11 +46,10 @@ router.post('/', (req, res, next) => {
   router.put('/:id', (req, res, next) => {
     Word.findOne({ id: req.params.id })
       .then(Word => {
-        Word.name = req.body.name;
-        Word.description = req.body.description;
-        Word.url = req.body.url;
-  
-        Word.updateOne({ id: req.params.id }, Word)
+        Word.plainText = req.body.plainText;
+        Word.ipaText = req.body.ipaText;
+        console.log({ id: req.body.id }, {$set:Word});
+        Word.updateOne({ id: req.body.id },{$set:Word})
           .then(result => {
             res.status(204).json({
               message: 'Word updated successfully'

@@ -129,7 +129,7 @@ export class WordEditComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     let value = form.value // get values from form’s fields
-    let newWord = new Word(value.id, value.plainText, value.ipaText);
+    let newWord = new Word(value.id, value.plainText, this.ipaText.nativeElement.value);
     if (this.editMode == true) {
       this.wordService.updateWord(this.originalWord, newWord);
     }

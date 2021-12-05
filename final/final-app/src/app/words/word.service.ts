@@ -79,7 +79,6 @@ export class WordService {
     if (pos < 0) {
       return;
     }
-
     // set the id of the new Word to the id of the old Word
     newWord.id = originalWord.id;
     //newWord._id = originalWord._id;
@@ -91,7 +90,6 @@ export class WordService {
       newWord, { headers: headers })
       .subscribe(
         (response: Response) => {
-          console.log(this.words[pos], newWord);
           this.words[pos] = newWord;
           this.storeWords();
         }
