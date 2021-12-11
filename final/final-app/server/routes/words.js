@@ -1,14 +1,14 @@
 var express = require('express');
 const sequenceGenerator = require('./sequenceGenerator');
-const Word = require('../models/Word');
+const Word = require('../models/word');
 var router = express.Router();
 module.exports = router;
 
 router.get('/', (req, res, next) => {
-  Word.find().then(Words => {
+  Word.find().then(words => {
     res.status(200).json({
-      message: "Words fetched successfully",
-      words: Words
+      message: "word fetched successfully",
+      words: words
     });
   }).catch(error => {
     res.status(500).json({
@@ -19,20 +19,19 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-    const maxWordId = sequenceGenerator.nextId("Words");
+    const maxWordId = sequenceGenerator.nextId("words");
   
-    const Word = new Word({
+    const word = new Word({
       id: maxWordId,
-      plainText:req.body.plainText,
+      plainText: req.body.plainText,
       ipaText: req.body.ipaText
     });
-
   
-    Word.save()
+    word.save()
       .then(createdWord => {
         res.status(201).json({
           message: 'Word added successfully',
-          Word: createdWord
+          word: createdWord
         });
       })
       .catch(error => {
@@ -45,11 +44,10 @@ router.post('/', (req, res, next) => {
 
   router.put('/:id', (req, res, next) => {
     Word.findOne({ id: req.params.id })
-      .then(Word => {
-        Word.plainText = req.body.plainText;
-        Word.ipaText = req.body.ipaText;
-        console.log({ id: req.body.id }, {$set:Word});
-        Word.updateOne({ id: req.body.id },{$set:Word})
+      .then(word => {
+        word.plainText = req.body.plainText;
+        word.ipaText = req.body.ipaText;
+        Word.updateOne({ id: req.params.id }, word)
           .then(result => {
             res.status(204).json({
               message: 'Word updated successfully'
@@ -65,14 +63,14 @@ router.post('/', (req, res, next) => {
       .catch(error => {
         res.status(500).json({
           message: 'Word not found.',
-          error: { Word: 'Word not found'}
+          error: { word: 'Word not found'}
         });
       });
   });
 
   router.delete("/:id", (req, res, next) => {
     Word.findOne({ id: req.params.id })
-      .then(Word => {
+      .then(word => {
         Word.deleteOne({ id: req.params.id })
           .then(result => {
             res.status(204).json({
@@ -89,7 +87,7 @@ router.post('/', (req, res, next) => {
       .catch(error => {
         res.status(500).json({
           message: 'Word not found.',
-          error: { Word: 'Word not found'}
+          error: { word: 'Word not found'}
         });
       });
   });

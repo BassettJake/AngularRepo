@@ -43,18 +43,16 @@ export class WordService {
 
 
   getWord(id: number): Word {
-
-    return this.words.slice()[id];
+    let index = this.words.findIndex(f=>f.id == id);
+    return this.words.slice()[index];
   }
 
   addWord(word: Word) {
     if (!word) {
       return;
     }
-
     // make sure id of the new Word is empty
     word.id = Number('');
-
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // add to database
@@ -82,7 +80,6 @@ export class WordService {
     // set the id of the new Word to the id of the old Word
     newWord.id = originalWord.id;
     //newWord._id = originalWord._id;
-
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // update database
@@ -104,7 +101,6 @@ export class WordService {
     }
 
     const pos = this.words.findIndex(d => d.id === word.id);
-
     if (pos < 0) {
       return;
     }

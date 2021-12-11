@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
-const Word = require('../models/Word');
-const Wordschema = mongoose.Schema({
+const Word = require('../models/word');
+const wordSchema = mongoose.Schema({
   id: {
-    type: Number,
+    type: String,
     required: true
   },
   plainText: {
@@ -15,4 +15,4 @@ const Wordschema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Word', Wordschema);
+module.exports = mongoose.model('Word', wordSchema);

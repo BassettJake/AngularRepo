@@ -29,6 +29,7 @@ export class WordEditComponent implements OnInit {
   ngOnInit(): void {
     let list = document.getElementById("word-list");
     list.classList.add("hiddenEle");
+
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -41,7 +42,6 @@ export class WordEditComponent implements OnInit {
         if (!this.originalWord) {
           return
         }
-
         this.editMode = true;
         this.word = JSON.parse(JSON.stringify(this.originalWord));
       });
