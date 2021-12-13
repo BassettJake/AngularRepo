@@ -86,9 +86,9 @@ export class WordEditComponent implements OnInit {
         case "ɚ": text = "'er' (burn)"; break;
         case "eɪ": text = "'ae' (ape)"; break;
         case "f": text = "'f' (fly)"; break;
-        case "g": text = "'g' (grow)"; break;
+        case "ɡ": text = "'g' (grow)"; break;
         case "h": text = "'h' (hunt)"; break;
-        case "I": text = "'ih' (itch)"; break;
+        case "ɪ": text = "'ih' (itch)"; break;
         case "i": text = "'ee' (eagle)"; break;
         case "dʒ": text = "'j' (giant)"; break;
         case "k": text = "'k' (kelp)"; break;

@@ -10,8 +10,7 @@ const wordSchema = mongoose.Schema({
     required: true
   },
   ipaText: {
-    type: String,
-    required: true
+    type: String
   }
 });
 
